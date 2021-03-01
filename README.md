@@ -56,6 +56,12 @@ After creating the database, migrations must be applied to set up the tables in 
 
 The observation portal should now be accessible from <http://127.0.0.1:8000>!
 
+### **Run local unit tests**
+
+If you override serializers with your own behaviour, you should write some unit tests to ensure they are working properly. Take a look at the base libraries unit test files for helper functions you can import to make writing unit tests easier. You can run local unit tests in a test* file or package with:
+
+    (env) python manage.py test --settings=test_settings
+
 
 ## Overriding Serializers
 Overriding the default Serializers allows customizable validation for the different models.
@@ -84,7 +90,7 @@ class MyTargetSerializer(TargetSerializer):
         return data
 ```
 
-Then in settings.py, prior to importing the library's settings, set the environment variable to point to your serializer dotpath:
+Then in env_overrides.py, which are imported into the local settings.py prior to importing the library's settings, set the environment variable to point to your serializer dotpath:
 
 ```os.environ['REQUESTGROUPS_TARGET_SERIALIZER'] = 'observation_portal.serializers.my_serializer_file.MyTargetSerializer'```
 
