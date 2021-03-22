@@ -9,7 +9,7 @@ This project provides a forkable base that can be used to customize an Observati
 1. Specifying your own Serializers for each model, allowing for observatory specific validation rules to be added.
 2. Defining generic modes, optical elements, and adding instrument and mode specific cerberus validation schemas to Configdb.
 3. Overriding settings directly in settings.py or using environment variables to override settings.
-4. If all else fails, the base Observation Portal library can be forked and modified, and you can submit a pull request the features are generally useful.
+4. If all else fails, the base Observation Portal library can be forked and modified, and you can submit a pull request for the features are generally useful.
 
 For more information on this project, please see the [base Observation Portal library here](https://github.com/observatorycontrolsystem/observation-portal)
 
