@@ -18,18 +18,18 @@ For more information on this project, please see the [base Observation Portal li
 
 Optional prerequisites can be skipped for reduced functionality.
 
--   Python >= 3.6
+-   Python >= 3.7
 -   PostgreSQL >= 9.6
--   A running [Configuration Database](https://github.com/observatorycontrolsystem/configdb) 
+-   A running [Configuration Database](https://github.com/observatorycontrolsystem/configdb)
 -   (Optional) A running [Downtime Database](https://github.com/observatorycontrolsystem/downtime)
--   (Optional) A running Elasticsearch
+-   (Optional) A running OpenSearch
 
 
 ## Local Development
 
 ### **Set up external services**
 
-Please refer to the [Configuration Database](https://github.com/observatorycontrolsystem/configdb) and [Downtime Database](https://github.com/LCOGT/downtime) projects for instructions on how to get those running, as well as the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/install-elasticsearch.html) for options on how to run Elasticsearch.
+Please refer to the [Configuration Database](https://github.com/observatorycontrolsystem/configdb) and [Downtime Database](https://github.com/LCOGT/downtime) projects for instructions on how to get those running.
 
 ### **Set up a [virtual environment](https://docs.python.org/3/tutorial/venv.html)**
 
@@ -38,7 +38,7 @@ is used to denote commands that should be run using your virtual environment.
 
     python3 -m venv env
     source env/bin/activate
-    (env) pip install numpy && pip install -r requirements.txt
+    (env) pip install numpy && pip install django-ocs-observation-portal
 
 ### **Set up the database**
 
@@ -92,6 +92,6 @@ class MyTargetSerializer(TargetSerializer):
 
 Then in env_overrides.py, which are imported into the local settings.py prior to importing the library's settings, set the environment variable to point to your serializer dotpath:
 
-```os.environ['REQUESTGROUPS_TARGET_SERIALIZER'] = 'observation_portal.serializers.my_serializer_file.MyTargetSerializer'```
+```os.environ['REQUESTGROUPS_TARGET_SERIALIZER'] = 'serializers.my_serializer_file.MyTargetSerializer'```
 
 Make sure your custom serializer extends the base serializer and runs it's validate method when overriding if you want the built in validation for that model to continue. A full list of the environment variables for overriding serializers can be found in the [library's settings.py](https://github.com/observatorycontrolsystem/observation-portal/blob/master/observation_portal/settings.py#L287)
